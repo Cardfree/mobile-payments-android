@@ -117,7 +117,7 @@ class UIComponentsActivityViewModel(application: Application) : MobilePaymentsVi
                 put("apiVersionMinor", 0)
             }
             if( has("transactionInfo") ){
-                val transactionInfo = getJSONObject("transactionInfo").apply {
+                getJSONObject("transactionInfo").apply {
                     put("totalPrice", state.value.amountInput.toDoubleOrNull().toString())
                     put("totalPriceStatus", "FINAL")
                 }
