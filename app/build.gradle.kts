@@ -51,6 +51,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
 
+    //Mobile Payments SDK dependencies
     implementation(files("libs/cardfree-payments-android-v1.0.1-release.aar"))
     implementation(libs.jackson.databind)
     implementation(libs.okhttp)
