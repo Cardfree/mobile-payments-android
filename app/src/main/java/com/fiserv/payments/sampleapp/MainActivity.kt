@@ -236,7 +236,7 @@ class MainActivity : ComponentActivity() {
     private val activityLauncher = registerForActivityResult(contract = StartActivityForResult(),
         callback ={ result: ActivityResult? ->
             if( result?.resultCode == RESULT_OK ){
-                //Transaction was complated
+                //Transaction was completed
                 val transactionString = result.data?.getStringExtra(TRANSACTION_KEY)
                 if( transactionString != null ){
                     val jsonHandler = Json{ ignoreUnknownKeys = true }
