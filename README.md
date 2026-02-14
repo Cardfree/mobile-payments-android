@@ -76,7 +76,7 @@ In addition, you are able to configure certain optional parameters to control an
     ```
 
 # Customization
-The Mobile Payments SDK has an extensive Customization suite available to finetune the look and feel of the provided UI to match the host application.  You can find details in the [Customization](/documentation/customization.md) walkthrough
+The Mobile Payments SDK has an extensive Customization suite available to finetune the look and feel of the provided UI to match the host application.  You can find details in the [Customization](/docs/customization.md) walkthrough
 
 # Integration
 The first step to integrating the MobilePayments SDK is determining what method of integration is right for you.
@@ -89,6 +89,6 @@ If even that’s not enough, and you really must have a unique UI, then you’re
 
 **Quick Links**
 
-- [Sheets](/documentation/sheets.md)
-* [UI Components](/documentation/ui_components.md)
-+ [Direct](/documentation/direct.md)
+- [Sheets](/docs/sheets.md)
+* [UI Components](/docs/ui_components.md)
++ [Direct](/docs/direct.md)
