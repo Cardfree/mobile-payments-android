@@ -8,8 +8,8 @@ In addition, for those looking for a truly custom experience, the full underlyin
 ## Prerequisites
 To use the MobilePayments SDK on Android, your app must have:
 
-	+ a minSdkVersion of 26 or higher
-	- a compileSdkVersion of 36 or higher
+	- a minSdkVersion of 26 or higher
+	+ a compileSdkVersion of 36 or higher
 
 In addition, you must set up a merchant account and associated payment configurations with CardFree
 
@@ -37,10 +37,10 @@ Once added, simply sync your gradle files and the MobilePayments SDK will be ava
 
 # Initialization
 Initializing the MobilePayments SDK is done on app start, in the Application.onCreate method.  Here, you will provide:
-  + a reference to the host Application
+  - a reference to the host Application
   * the Environment (SANDBOX or PRODUCTION) you wish to run the SDK on
   * the clientToken provided when your merchant account was configured
-  - **(OPTIONAL)** the ID of a store within your merchant, that will assign transactions and payments made to that store
+  + **(OPTIONAL)** the ID of a store within your merchant, that will assign transactions and payments made to that store
 
 The invocation will look like this:
 ```
@@ -55,7 +55,7 @@ MobilePayments.initialize(
 ## Optional Parameters
 In addition, you are able to configure certain optional parameters to control and influence the behavior of the MobilePayments SDK.  These are:
 
-  + A user ID value (typically an account ID or otherwise unique identifier for a customer).  This will allow a customer with this ID value to access previously saved Credit Cards for use in future payments.
+  - A user ID value (typically an account ID or otherwise unique identifier for a customer).  This will allow a customer with this ID value to access previously saved Credit Cards for use in future payments.
     ```
     MobilePayments.setUserId("<USER\_ID>")
     ```
@@ -65,7 +65,7 @@ In addition, you are able to configure certain optional parameters to control an
     MobilePayments.setBusinessLocationId("STORE\_ID"
     ```
 
-  - A boolean to control GooglePay access in the Sheets integration
+  + A boolean to control GooglePay access in the Sheets integration
     ```
     MobilePayments.setGooglePayEnabled(true)
     ```
