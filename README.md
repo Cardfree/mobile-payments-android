@@ -16,7 +16,7 @@ To use the MobilePayments SDK on Android, your app must have
 1. a `minSdkVersion` of `26` or higher
 2. a `compileSdkVersion` of `36` or higher
 	
-In addition, you must set up a merchant account and associated payment configurations with CardFree
+In addition, you must set up a merchant account and associated payment configurations with Fiserv
 
 ## Installation
 To install on Android, first ensure you have added the maven repository to your project.  To do so, you must ensure the following is in your project’s settings.gradle.kts file
