@@ -54,6 +54,7 @@ import com.fiserv.payments.ui.theme.MobilePaymentsStyleProvider
 import com.fiserv.payments.ui.views.CreditCardListMode
 import com.fiserv.payments.ui.views.CreditCardListView
 import com.fiserv.payments.ui.views.PurchaseButton
+import com.fiserv.payments.ui.views.PurchaseButtonOperationMode
 import com.fiserv.payments.ui.views.models.CreditCardDetailsAddressMode
 import com.fiserv.payments.ui.views.models.CreditCardListViewModel
 import com.fiserv.payments.ui.views.models.PurchaseButtonModel
@@ -228,6 +229,7 @@ class UIComponentsActivity : ComponentActivity(), UIComponentsActivityListener {
                                 payment = cardListModel.getSelectedCard(),
                                 modifier = Modifier,
                                 model = purchaseButtonModel,
+                                mode = PurchaseButtonOperationMode.SINGLE_CARD,
                                 requireCvv = false,
                                 transactionType = TransactionType.SALE,
                                 purchaseListener = object: Response<Transaction>{

@@ -44,6 +44,7 @@ import com.fiserv.payments.sampleapp.ui.theme.HalfTrans
 import com.fiserv.payments.sampleapp.ui.theme.Typography
 import com.fiserv.payments.ui.theme.MobilePaymentsStyleProvider
 import com.fiserv.payments.ui.views.PurchaseButton
+import com.fiserv.payments.ui.views.PurchaseButtonOperationMode
 import com.fiserv.payments.ui.views.models.CreditCardDetailsAddressMode
 import com.fiserv.payments.ui.views.models.PurchaseButtonModel
 import com.google.android.gms.common.api.CommonStatusCodes
@@ -206,7 +207,7 @@ class SingleCardActivity : ComponentActivity(), UIComponentsActivityListener {
                                 model = purchaseButtonModel,
                                 amount = state.amountInput.toDoubleOrNull() ?: 0.0,
                                 payment = null,
-                                singleCardMode = true,
+                                mode = PurchaseButtonOperationMode.SINGLE_CARD,
                                 autoSubmitAfterAddingCard = true,
                                 singleCardAddressMode = CreditCardDetailsAddressMode.POSTAL_CODE,
                                 transactionType = TransactionType.SALE,
