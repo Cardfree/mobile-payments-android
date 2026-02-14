@@ -75,3 +75,16 @@ In addition, you are able to configure certain optional parameters to control an
     MobilePayments.setGooglePayEnabled(true)
     ```
 
+# Integration
+The first step to integrating the MobilePayments SDK is determining what method of integration is right for you.
+
+The simplest and easiest of the available options is Sheets. This is as quick and easy as firing off an intent and monitoring the response.  This is by far the easiest path to go, but simultaneously the least flexible.
+
+If you require more flexibility, but don’t want to deal with customer information directly, or just want a personalized touch to the user experience, then using the MobilePayments UI Components is the way to go.
+
+If even that’s not enough, and you really must have a unique UI, then you’re looking to interface with MobilePayments Directly.  This will take the most work, and you will have to collect user information to pass to MobilePayments, but you will be able to make your app look and behave exactly the way you want to.
+
+**Quick Links**
+-[Sheets](/documentation/sheets.md)
+-[UI Components](/documentation/ui_components.md)
+-[Sheets](/documentation/direct.md)
