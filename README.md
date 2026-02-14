@@ -37,10 +37,10 @@ Once added, simply sync your gradle files and the MobilePayments SDK will be ava
 
 # Initialization
 Initializing the MobilePayments SDK is done on app start, in the Application.onCreate method.  Here, you will provide:
-  - a reference to the host Application
-  * the Environment (SANDBOX or PRODUCTION) you wish to run the SDK on
-  * the clientToken provided when your merchant account was configured
-  + **(OPTIONAL)** the ID of a store within your merchant, that will assign transactions and payments made to that store
+  1. a reference to the host Application
+  2. the Environment (SANDBOX or PRODUCTION) you wish to run the SDK on
+  3. the clientToken provided when your merchant account was configured
+  4. **(OPTIONAL)** the ID of a store within your merchant, that will assign transactions and payments made to that store
 
 The invocation will look like this:
 ```
