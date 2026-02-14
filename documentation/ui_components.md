@@ -63,7 +63,7 @@ The `CreditCardListView` is also paired with a `CreditCardListViewModel` that co
     * Update the currently selected card with the provided card.  If there is no matching Credit Card, or the provided value is null, the selection will be cleared
   * addCreditCard()
     * Display the CreditCardDetailsModal to collect Credit Card information from the user and add it to the current list
-  * deleteCard(card: CreditCard, listener: Response?)
+  * deleteCard(card: CreditCard, listener: Response<Any?>?)
     * Remove the provided Credit Card from the list and, if saved, from the User ID
 
 ### Credit Card Details
@@ -157,7 +157,7 @@ The `CreditCardDetailsViewModel` has a collection of methods that are of import 
     * Resets the current state of the `CreditCardDetailsView`
   * getCreditCardValid()
     * Returns the validity of the currently entered Credit Card information.  A true value means all checks are passed and the card is ready to be tokenized.
-  * addCreditCard(listener: Response?)
+  * addCreditCard(listener: Response<CreditCard>?)
     * Initializes the tokenization process, assigns the card to the provided Customer ID (if any), and then returns the tokenized CreditCard to `Response.success`.  Or, if there is an error, returns error information to `Response.error`
    
 ### Purchase
@@ -183,10 +183,9 @@ PurchaseButton(
   transactionType = TransactionType.SALE,
   clientTransactionId = null,
   merchantReference = null,
-  purchaseListener = object: Response{
-    override fun success(response: Any?) {
-      val transaction = response as Transaction
-      updateSuccessMessage("Transaction ID: ${transaction.transactionId}\nAmount: ${transaction.amount}")
+  purchaseListener = object: Response<Transaction>{
+    override fun success(response: Transaction) {
+      updateSuccessMessage("Transaction ID: ${response.transactionId}\nAmount: ${response.amount}")
     }
 
     override fun error(exception: Throwable?) {
@@ -253,7 +252,8 @@ Here are some useful utility methods shared across all `MobilePaymentsViewModel`
     * **Note:** Use this to suppress throbber behavior if necessary
   * parseError(exception: Throwable?): String
     * Return the primary error message of a `WebErrorSet` provided to a `Response.error`, or the `mp_errorGeneric` string if no message can be found.
-  * makePayment(amount: Double, paymentMethod: PaymentMethod, transactionType: TransactionType, listener:Response?)
+  * makePayment(amount: Double, paymentMethod: PaymentMethod, transactionType: TransactionType, listener:Response<Transaction>?)
     * Charge the provided `amount` to the provided `PaymentMethod` through the `TransactionType`, and return the resulting `Transaction` to `Response.success`, or the error to `Response.error`
+
 
 
