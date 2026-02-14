@@ -23,19 +23,19 @@ intent.putExtra(CREDIT_CARD_ADDRESS_KEY, address.toJson().toString())
 ### Parameters
   * Amount 
     * A Double that represents the amount to charge the selected Payment method.  If this value is not set, then the Activity will immediately close and return RESULT_CANCELED
-  * **(Optional)** Customer ID
+  * **(OPTIONAL)** Customer ID
     * A unique alphanumeric string identifying a single user in order to access previously saved Credit Cards and save new ones for a future transaction.  This value is the same as that passed to `MobilePayments.setCustomerId`, and can be omitted if you have set it there or if you do not wish to allow users to save Credit Cards and use them again in future.
-  * **(Optional)** Transaction Type
+  * **(OPTIONAL)** Transaction Type
     * The type of Payment you are seeking to collect.  The options are `TransactionType.SALE` or `TransactionType.AUTH`.  Simply put, `SALE` is used to collect funds immediately, while `AUTH` will reserve funds on the payment method, but will not collect them until a `CAPTURE` transaction is run in the future. MobilePayments will default to SALE if this parameter is not set.
-  * **(Optional)** Client Transaction Id
+  * **(OPTIONAL)** Client Transaction Id
     * An identifier for the transaction, used for tracking purposes. Defaults to a randomly generated UUID if not supplied.
-  * **(Optional)** Merchant Reference
+  * **(OPTIONAL)** Merchant Reference
     * A reference value for the transaction, usually the ticket or order number
-  * **(Optional)** Credit Card Require CVV
+  * **(OPTIONAL)** Credit Card Require CVV
     * Flag to require CVV when re-using previously saved `CreditCards` for this transaction
-  * **(Optional)** Credit Card Address Mode
+  * **(OPTIONAL)** Credit Card Address Mode
     * Mode for entering Credit Card billing address.  Options are `POSTAL_CODE`, `FULL_ADDRESS`, and `NONE`
-  * **(Optional)** Credit Card Address
+  * **(OPTIONAL)** Credit Card Address
     * `Address` to use as the billing address for this transaction.  To be paired with `CreditCardDetailsAddressMode.NONE`
 
 
