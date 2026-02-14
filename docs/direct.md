@@ -7,6 +7,7 @@ The MobilePayments APIs are broken into several distinct categories, which you c
   * [Credit Cards](#credit-cards)
   * [Payments](#payments)
   * [General](#general)
+  * [Javadocs](#javadocs)
 
 ## Credit Cards
 Credit Cards are handled through the `CreditCardManager` object.  This is a singleton reference to contain all Credit Card interactions with the MobilePayments API.  Within it, there are three functions.
@@ -165,4 +166,4 @@ Errors from the MobilePayments API are broadly handled by the `WebErrorSet` clas
 **Note:** In some rare cases, the returned error may be a `TokenExpiredException`. This is analogous to an HTTP 403 error code and means you should double check that your Client Token value provided to MobilePayments.initialize is both correct and valid.
 
 ## Javadocs
-Javadocs are available [here](/javadocs/index.html)
+Javadocs are available [here](https://cardfree.github.io/mobile-payments-android/)
