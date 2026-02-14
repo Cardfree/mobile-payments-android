@@ -62,7 +62,7 @@ In addition, you are able to configure certain optional parameters to control an
 
   - A user ID value (typically an account ID or otherwise unique identifier for a customer).  This will allow a customer with this ID value to access previously saved Credit Cards for use in future payments.
     ```
-    MobilePayments.setUserId("<USER_ID>")
+    MobilePayments.setCustomerId("<CUSTOMER_ID>")
     ```
     
   * The ID of a store within your merchant, this is the same value that can be passed into inititalize.  This will direct payments to that location specifically as well as ensure payment configurations are accurate to the specific store in the event of different configurations within the same merchant.
