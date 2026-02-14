@@ -3,8 +3,8 @@ The MobilePayments SDK is a library containing a suite of payment tools designed
 
 In addition, for those looking for a truly custom experience, the full underlying Payments API is available to be plugged directly into a custom-built UI.
 
-<div class="container" style="display: flex; justify-content: space-evenly;">
-	<img src="/images/sheet.png" alt="Sheet" style="width:25%; height:auto;">	<img src="/images/singlecardmode.png" alt="Single Card Mode" style="width:25%; height:auto;">	<img src="/images/uicomponents.png" alt="UI Components" style="width:25%; height:auto;">
+<div class="container" style="width:100%; display: flex; justify-content: space-evenly;" align="center">
+	<img src="/images/sheet.png" alt="Sheet" style="width:25%; height:auto;">&nbsp;&nbsp;<img src="/images/singlecardmode.png" alt="Single Card Mode" style="width:25%; height:auto;">&nbsp;&nbsp;<img src="/images/uicomponents.png" alt="UI Components" style="width:25%; height:auto;">
 </div>
 
 
@@ -75,3 +75,16 @@ In addition, you are able to configure certain optional parameters to control an
     MobilePayments.setGooglePayEnabled(true)
     ```
 
+# Integration
+The first step to integrating the MobilePayments SDK is determining what method of integration is right for you.
+
+The simplest and easiest of the available options is Sheets. This is as quick and easy as firing off an intent and monitoring the response.  This is by far the easiest path to go, but simultaneously the least flexible.
+
+If you require more flexibility, but don’t want to deal with customer information directly, or just want a personalized touch to the user experience, then using the MobilePayments UI Components is the way to go.
+
+If even that’s not enough, and you really must have a unique UI, then you’re looking to interface with MobilePayments Directly.  This will take the most work, and you will have to collect user information to pass to MobilePayments, but you will be able to make your app look and behave exactly the way you want to.
+
+**Quick Links**
+-[Sheets](/documentation/sheets.md)
+-[UI Components](/documentation/ui_components.md)
+-[Sheets](/documentation/direct.md)
