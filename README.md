@@ -18,9 +18,9 @@ To use the MobilePayments SDK on Android, your app must have:
 
 
 
-&nbsp;	\* a minSdkVersion of 26 or higher
+&nbsp;	+ a minSdkVersion of 26 or higher
 
-&nbsp;	\* a compileSdkVersion of 36 or higher
+&nbsp;	- a compileSdkVersion of 36 or higher
 
 
 
@@ -52,11 +52,15 @@ dependencyResolutionManagement {
 
 Next you need to add the dependency to your module’s Gradle build file (app/build.gradle.kts):
 
-```dependencies {
+```
+
+dependencies {
 
 &nbsp;   implementation("com.cardfree.fiserv.payments:mobile-payments-sdk:1.0.1")
 
-}```
+}
+
+```
 
 
 
@@ -70,13 +74,13 @@ Initializing the MobilePayments SDK is done on app start, in the Application.onC
 
 
 
-&nbsp;	\* a reference to the host Application
+&nbsp;	+ a reference to the host Application
 
 &nbsp;	\* the Environment (SANDBOX or PRODUCTION) you wish to run the SDK on
 
 &nbsp;	\* the clientToken provided when your merchant account was configured
 
-&nbsp;	\* \*\*(OPTIONAL)\*\* the ID of a store within your merchant, that will assign transactions and payments made to that store
+&nbsp;	- \*\*(OPTIONAL)\*\* the ID of a store within your merchant, that will assign transactions and payments made to that store
 
 
 
@@ -108,7 +112,7 @@ In addition, you are able to configure certain optional parameters to control an
 
 
 
-&nbsp;	\* A user ID value (typically an account ID or otherwise unique identifier for a customer).  This will allow a customer with this ID value to access previously saved Credit Cards for use in future payments.
+&nbsp;	+ A user ID value (typically an account ID or otherwise unique identifier for a customer).  This will allow a customer with this ID value to access previously saved Credit Cards for use in future payments.
 
 ```
 
@@ -128,7 +132,7 @@ MobilePayments.setBusinessLocationId("STORE\_ID"
 
 
 
-&nbsp;	\* A boolean to control GooglePay access in the Sheets integration
+&nbsp;	- A boolean to control GooglePay access in the Sheets integration
 
 ```
 
