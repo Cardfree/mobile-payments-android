@@ -50,7 +50,13 @@ This method will delete a tokenized card from the remote server.  If it had been
       * Error will return a throwable, most commonly a `WebErrorSet` containing error information
 
 ## Payments
-Payments are handled through the `PaymentManager` object.  Like `CreditCardManager`, it is a singleton that contains all Payments interactions with the MobilePayments API.  It contains five functions.
+Payments are handled through the `PaymentManager` object.  Like `CreditCardManager`, it is a singleton that contains all Payments interactions with the MobilePayments API.  It contains six functions.
+
+### Google Pay Config
+```
+getGooglePayRequestConfig()
+```
+This method returns the Google Pay JSON object for your payment gateway.  It will detail supported payment methods, required customer information, and so on and will need only minor modifications (e.g., adding an amount to charge) to be ready to pass to Google Pay in your UI
 
 ### Payments
 Payments are payment run against a `Payment` object.  There are two functions available for Payments, and both are executed against by a `Payment` object, which is defined as:
@@ -157,3 +163,4 @@ Errors from the MobilePayments API are broadly handled by the `WebErrorSet` clas
 `WebErrorSet.primaryCode` and `WebErrorSet.primaryMessage` will provide the primary driver of the error, being the error code and the message returned from the remote server.  If more information is required, `WebErrorSet.errors` is a list of `WebError` objects containing the full set of errors returned from the operation and can be examined to determine the root cause or adjust messaging to the user.
 
 **Note:** In some rare cases, the returned error may be a `TokenExpiredException`. This is analogous to an HTTP 403 error code and means you should double check that your Client Token value provided to MobilePayments.initialize is both correct and valid.
+
