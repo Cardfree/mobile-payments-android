@@ -16,7 +16,7 @@ Credit Cards are handled through the `CreditCardManager` object.  This is a sing
 ```
 retrieveCreditCards(customerId: String, response: Response<List<CreditCard>>?)
 ```
-This method will query the remote server for all Credit Cards saved to the provided User ID value and return to the result to the provided `Response`.  On a successful query, the result will also be stored in memory, accessible through `CreditCardManager.creditCards`
+This method will query the remote server for all Credit Cards saved to the provided Customer ID value and return to the result to the provided `Response`.  On a successful query, the result will also be stored in memory, accessible through `CreditCardManager.creditCards`
   * Customer ID
     * A unique alphanumeric string identifying a single customer
   * **(OPTIONAL)** Response

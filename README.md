@@ -60,7 +60,7 @@ MobilePayments.initialize(
 ## Optional Parameters
 In addition, you are able to configure certain optional parameters to control and influence the behavior of the MobilePayments SDK.  These are:
 
-  - A user ID value (typically an account ID or otherwise unique identifier for a customer).  This will allow a customer with this ID value to access previously saved Credit Cards for use in future payments.
+  - A customer ID value (typically an account ID or otherwise unique identifier for a customer).  This will allow a customer with this ID value to access previously saved Credit Cards for use in future payments.
     ```
     MobilePayments.setCustomerId("<CUSTOMER_ID>")
     ```

@@ -8,7 +8,7 @@ Component integration is a more in-depth, and simultaneously more flexible integ
   * [Utility](#utility)
 
 ## Credit Cards
-Credit Cards in MobilePayments have two major UI elements, a Credit Card List primarily used for saving and managing Credit Cards associated with a provided User ID value, and a Credit Card Details UI used to collect the user’s Credit Card information and tokenize the data for usage elsewhere.
+Credit Cards in MobilePayments have two major UI elements, a Credit Card List primarily used for saving and managing Credit Cards associated with a provided Customer ID value, and a Credit Card Details UI used to collect the user’s Credit Card information and tokenize the data for usage elsewhere.
 
 ### Credit Card List
 The Credit Card List is provided through the `CreditCardListView` Composable.  It can be treated the same as any other Composable, inserted into any other Composable or, if using a traditional view-based layout, into a [ComposeView](https://www.geeksforgeeks.org/kotlin/android-jetpack-compose-interoperability-using-compose-in-xml-layouts/).  When doing so, the `CreditCardListView` will look like this:
@@ -54,7 +54,7 @@ CreditCardListView(
 #### The Model
 The `CreditCardListView` is also paired with a `CreditCardListViewModel` that controls and provides access to the state of the List.  You can use this to achieve particular behaviors as part of your UI flow.  Of particular import amongst the `CreditCardListViewModel` are the following method calls:
   * refreshCreditCardList()
-    * Retrieve a new copy of the list of all credit cards associated with the User ID value provided to MobilePayments, and update the UI accordingly
+    * Retrieve a new copy of the list of all credit cards associated with the Customer ID value provided to MobilePayments, and update the UI accordingly
   * updateCreditCardList(cards: MutableList<CreditCard>)
     * Replace the currently displayed list of Credit Cards with the provided set
   * getSelectedCard(): CreditCard?
@@ -64,7 +64,7 @@ The `CreditCardListView` is also paired with a `CreditCardListViewModel` that co
   * addCreditCard()
     * Display the CreditCardDetailsModal to collect Credit Card information from the user and add it to the current list
   * deleteCard(card: CreditCard, listener: Response<Any?>?)
-    * Remove the provided Credit Card from the list and, if saved, from the User ID
+    * Remove the provided Credit Card from the list and, if saved, from the Customer ID
 
 ### Credit Card Details
 Credit Card Details is handled through two UI components.  The `CreditCardDetailsModal`, for a modal, modular display that can easily slot anywhere its needed, and the `CreditCardDetailsView` for embedding the UI directly into the host UI.

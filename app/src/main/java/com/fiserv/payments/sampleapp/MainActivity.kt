@@ -106,7 +106,7 @@ class MainActivity : ComponentActivity() {
                                 label = {
                                     Text(
                                         textAlign = TextAlign.Start,
-                                        text = "User ID",
+                                        text = "Customer ID",
                                         modifier = Modifier.padding(8.dp, 0.dp)
                                     )
                                 },
