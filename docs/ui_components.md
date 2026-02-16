@@ -163,9 +163,9 @@ The `CreditCardDetailsViewModel` has a collection of methods that are of import 
 ### Purchase
 Purchase in MobilePayments has only one UI element, the `PurchaseButton` Composable.  This element will display the amount being charged, and display a button that will automatically be enabled when all parameters are ready for a transaction.  When pressed, the button will charge the provided amount to the provided payment method and return the resulting `Transaction`.
 
-`PurchaseButton` operates in two ways, `MULTI_CARD` and `SINGLE_CARD`.
-  1. `MULTI_CARD` mode is an integration with the `CreditCardListView` or similar widget from the host UI that will provide ultimately a valid `PaymentMethod` from the customer.  When the PaymentMethod and amount are provided to the `PurchaseButton` in this mode, the button becomes enabled and the customer can press the button to initiate the transaction
-  2. `SINGLE_CARD` mode is a standalone mode where, if a `PaymentMethod` is not provided, when the customer presses the button, the `CreditCardDetailsModal` will open, allowing the customer to enter their `CreditCard` information and proceed through the transaction immediately
+`PurchaseButton` operates in two ways, `STANDARD` and `ONE_TIME_USE`.
+  1. `STANDARD` mode is an integration with the `CreditCardListView` or similar widget from the host UI that will provide ultimately a valid `PaymentMethod` from the customer.  When the PaymentMethod and amount are provided to the `PurchaseButton` in this mode, the button becomes enabled and the customer can press the button to initiate the transaction
+  2. `ONE_TIME_USE` mode is a standalone mode where, if a `PaymentMethod` is not provided, when the customer presses the button, the `CreditCardDetailsModal` will open, allowing the customer to enter their `CreditCard` information and proceed through the transaction immediately
 
 To add the `PurchaseButton` to your UI, simply declare the Composable:
 ```
@@ -175,11 +175,11 @@ PurchaseButton(
   amount = amount,
   payment = selectedCard,
   requireCvv = false,
-  mode = PurchaseButtonOperationMode.MULTI_CARD,
+  mode = PurchaseButtonOperationMode.STANDARD,
   customerId = "<CUSTOMER_ID>",
   canSaveCard = true,
   autoSubmitAfterAddingCard = false,
-  singleCardAddressMode = CreditCardDetailsAddressMode.POSTAL_CODE,
+  addressMode = CreditCardDetailsAddressMode.POSTAL_CODE,
   transactionType = TransactionType.SALE,
   clientTransactionId = null,
   merchantReference = null,
@@ -213,20 +213,20 @@ PurchaseButton(
   * **(OPTIONAL)** Purchase Listener
     * Listener invoked when the `Payment` is completed.  A successful transaction will return a `Transaction` object to `Response.success`, while an error will return details to `Response.error`
 
-##### `MULTI_CARD` Parameters
+##### `STANDARD` Parameters
   * Payment
     * The `PaymentMethod` to charge when the button is pressed.  This can also be updated through `PurchaseButtonModel.updatePaymentMethod(PaymentMethod)`
    
-##### `SINGLE_CARD` Parameters
+##### `ONE_TIME_USE` Parameters
   * **(OPTIONAL)** Payment
-    * The `PaymentMethod` to charge when the button is pressed.  This can also be updated through `PurchaseButtonModel.updatePaymentMethod(PaymentMethod)`.  Providing this will bypass the `CreditCardDetailsModal` step of `SINGLE_CARD` mode
+    * The `PaymentMethod` to charge when the button is pressed.  This can also be updated through `PurchaseButtonModel.updatePaymentMethod(PaymentMethod)`.  Providing this will bypass the `CreditCardDetailsModal` step of `ONE_TIME_USE` mode
   * **(OPTIONAL)** Customer ID
     * A unique alphanumeric string identifying a single user in order to access previously saved Credit Cards and save new ones for a future transaction.  This value is the same as that passed to `MobilePayments.setCustomerId`, and can be omitted if you have set it there or if you do not wish to allow users to save
   * **(OPTIONAL)** Can Save Card
     * Flag to allow the customer to save the `CreditCard` to the provided Customer ID.  Defaults to true
   * **(OPTIONAL)** Auto Submit After Adding Card
     * Flag to automatically proceed with transaction after completing the `CreditCardDetailsModal`.  Defaults to false
-  * **(OPTIONAL)** Single Card Address Mode
+  * **(OPTIONAL)** Address Mode
     * Mode for entering Credit Card billing address in `CreditCardDetailsModal`.  Options are `POSTAL_CODE`, `FULL_ADDRESS`, and `NONE`
 
 ### Google Pay

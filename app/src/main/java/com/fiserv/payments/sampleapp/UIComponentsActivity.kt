@@ -229,7 +229,6 @@ class UIComponentsActivity : ComponentActivity(), UIComponentsActivityListener {
                                 payment = cardListModel.getSelectedCard(),
                                 modifier = Modifier,
                                 model = purchaseButtonModel,
-                                mode = PurchaseButtonOperationMode.SINGLE_CARD,
                                 requireCvv = false,
                                 transactionType = TransactionType.SALE,
                                 purchaseListener = object: Response<Transaction>{

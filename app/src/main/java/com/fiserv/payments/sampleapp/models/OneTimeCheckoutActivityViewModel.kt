@@ -22,15 +22,15 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import org.json.JSONObject
 
-data class SingleCardActivityState(
+data class OneTimeCheckoutActivityState(
     var transactionMessage: String = "",
     var errorMessage: String = "",
     var amountInput: String = "",
     var isLoading: Boolean = false,
     var customerId: String? = null
 )
-class SingleCardActivityViewModel(application: Application) : MobilePaymentsViewModel(application), LoadingListener {
-    private val _state = MutableStateFlow(SingleCardActivityState())
+class OneTimeCheckoutActivityViewModel(application: Application) : MobilePaymentsViewModel(application), LoadingListener {
+    private val _state = MutableStateFlow(OneTimeCheckoutActivityState())
     val state = _state.asStateFlow()
 
     lateinit var paymentsClient: PaymentsClient

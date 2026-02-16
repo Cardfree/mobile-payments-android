@@ -27,7 +27,7 @@
             android:theme="@style/Theme.FiservMobilePaymentsSample">
         </activity>
         <activity
-            android:name=".SingleCardActivity"
+            android:name=".OneTimeCheckoutActivity"
             android:exported="true"
             android:theme="@style/Theme.FiservMobilePaymentsSample">
         </activity>

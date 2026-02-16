@@ -49,7 +49,6 @@ import com.fiserv.payments.api.payment.data.Transaction
 import com.fiserv.payments.api.payment.data.TransactionType
 import com.fiserv.payments.sampleapp.models.MainActivityViewModel
 import com.fiserv.payments.sampleapp.ui.theme.FiservMobilePaymentsSampleTheme
-import com.fiserv.payments.sampleapp.ui.theme.Green
 import com.fiserv.payments.sampleapp.ui.theme.HalfTrans
 import com.fiserv.payments.ui.activities.MobilePaymentsPurchaseActivity
 import com.fiserv.payments.ui.activities.data.AMOUNT_KEY
@@ -155,7 +154,7 @@ class MainActivity : ComponentActivity() {
                                     .fillMaxWidth()
                                     .padding(horizontal = 16.dp, vertical = 12.dp),
                                 onClick = {
-                                    val intent = Intent(this@MainActivity, SingleCardActivity::class.java)
+                                    val intent = Intent(this@MainActivity, OneTimeCheckoutActivity::class.java)
                                     if( state.customerId.isNotEmpty() ){
                                         intent.putExtra(CUSTOMER_ID_KEY, state.customerId)
                                     }

@@ -35,7 +35,7 @@ import androidx.compose.ui.unit.dp
 import com.fiserv.payments.api.core.Response
 import com.fiserv.payments.api.payment.data.Transaction
 import com.fiserv.payments.api.payment.data.TransactionType
-import com.fiserv.payments.sampleapp.models.SingleCardActivityViewModel
+import com.fiserv.payments.sampleapp.models.OneTimeCheckoutActivityViewModel
 import com.fiserv.payments.sampleapp.models.UIComponentsActivityListener
 import com.fiserv.payments.sampleapp.ui.theme.DarkText
 import com.fiserv.payments.sampleapp.ui.theme.Disabled
@@ -54,11 +54,10 @@ import com.google.android.gms.wallet.PaymentsClient
 import com.google.android.gms.wallet.Wallet
 import com.google.android.gms.wallet.WalletConstants
 import com.google.android.gms.wallet.contract.TaskResultContracts
-import com.google.pay.button.PayButton
 
-class SingleCardActivity : ComponentActivity(), UIComponentsActivityListener {
+class OneTimeCheckoutActivity : ComponentActivity(), UIComponentsActivityListener {
     private lateinit var paymentsClient: PaymentsClient
-    val model: SingleCardActivityViewModel by viewModels()
+    val model: OneTimeCheckoutActivityViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -193,9 +192,9 @@ class SingleCardActivity : ComponentActivity(), UIComponentsActivityListener {
                                 model = purchaseButtonModel,
                                 amount = state.amountInput.toDoubleOrNull() ?: 0.0,
                                 payment = null,
-                                mode = PurchaseButtonOperationMode.SINGLE_CARD,
+                                mode = PurchaseButtonOperationMode.ONE_TIME_USE,
                                 autoSubmitAfterAddingCard = true,
-                                singleCardAddressMode = CreditCardDetailsAddressMode.POSTAL_CODE,
+                                addressMode = CreditCardDetailsAddressMode.POSTAL_CODE,
                                 transactionType = TransactionType.SALE,
                                 purchaseListener = object: Response<Transaction>{
                                     override fun success(response: Transaction) {
