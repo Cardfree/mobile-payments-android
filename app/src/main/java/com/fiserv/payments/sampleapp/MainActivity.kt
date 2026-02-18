@@ -162,7 +162,7 @@ class MainActivity : ComponentActivity() {
                                 },
                             ){
                                 Text(
-                                    text = "One Time Use",
+                                    text = "Guest Checkout",
                                     modifier = Modifier,
                                 )
                             }
