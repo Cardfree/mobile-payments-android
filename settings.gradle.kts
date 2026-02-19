@@ -16,6 +16,13 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven {
+            url = uri("https://maven.pkg.github.com/Fiserv/mobile-payments-android")
+            credentials {
+                username = "GITHUB_USER_NAME"
+                password = "GITHUB_ACCESS_TOKEN"
+            }
+        }
     }
 }
 

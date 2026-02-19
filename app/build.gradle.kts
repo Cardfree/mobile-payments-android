@@ -41,7 +41,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -50,17 +49,5 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-
-    //Mobile Payments SDK dependencies
-    implementation(files("libs/fiserv-mobile-payments-android-v1.0.0.aar"))
-    implementation(libs.jackson.databind)
-    implementation(libs.okhttp)
-    implementation(libs.retrofit)
-    implementation(libs.converter.gson)
-    implementation(libs.converter.scalars)
-    implementation(libs.kotlinx.serialization.json)
-    implementation(libs.androidx.lifecycle.viewmodel.compose)
-    implementation(libs.androidx.foundation)
-    implementation(libs.compose.pay.button)
-    implementation(libs.play.services.wallet)
+    implementation(libs.mobile.payments)
 }

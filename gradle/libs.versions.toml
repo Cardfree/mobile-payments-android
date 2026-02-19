@@ -11,6 +11,7 @@ kotlinxSerializationJson = "1.10.0"
 lifecycleRuntimeKtx = "2.10.0"
 activityCompose = "1.12.3"
 composeBom = "2024.09.00"
+mobilePayments = "1.0.0"
 okhttp = "4.4.0"
 playServicesWallet = "19.5.0"
 retrofit = "2.9.0"
@@ -31,6 +32,7 @@ androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+mobile-payments = { module = "com.fiserv.payments:mobile-payments", version.ref = "mobilePayments" }
 okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
 play-services-wallet = { module = "com.google.android.gms:play-services-wallet", version.ref = "playServicesWallet" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
