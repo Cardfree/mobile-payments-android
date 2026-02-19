@@ -50,4 +50,8 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.mobile.payments)
+
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.compose.pay.button)
+    implementation(libs.play.services.wallet)
 }
