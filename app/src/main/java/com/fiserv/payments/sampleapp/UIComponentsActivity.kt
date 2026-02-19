@@ -16,6 +16,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
@@ -46,6 +48,8 @@ import com.fiserv.payments.api.payment.data.Transaction
 import com.fiserv.payments.api.payment.data.TransactionType
 import com.fiserv.payments.sampleapp.models.UIComponentsActivityListener
 import com.fiserv.payments.sampleapp.models.UIComponentsActivityViewModel
+import com.fiserv.payments.sampleapp.ui.theme.DarkText
+import com.fiserv.payments.sampleapp.ui.theme.Disabled
 import com.fiserv.payments.sampleapp.ui.theme.FiservMobilePaymentsSampleTheme
 import com.fiserv.payments.sampleapp.ui.theme.Green
 import com.fiserv.payments.sampleapp.ui.theme.HalfTrans
@@ -82,6 +86,8 @@ class UIComponentsActivity : ComponentActivity(), UIComponentsActivityListener {
             val purchaseButtonModel: PurchaseButtonModel by viewModels()
             purchaseButtonModel.addLoadingListener(model)
 
+            model.updateAmountInput("28.94")
+
             FiservMobilePaymentsSampleTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Box(
@@ -116,64 +122,7 @@ class UIComponentsActivity : ComponentActivity(), UIComponentsActivityListener {
                                     )
                                 }
                             }
-                            OutlinedTextField(
-                                shape = RoundedCornerShape(MobilePaymentsStyleProvider.shapes.getTextFieldCornerRadius()),
-                                colors = OutlinedTextFieldDefaults.colors(
-                                    focusedBorderColor = MobilePaymentsStyleProvider.colors.getPrimary(),
-                                    unfocusedBorderColor = MobilePaymentsStyleProvider.colors.getMediumText(),
-                                    focusedTextColor = MobilePaymentsStyleProvider.colors.getDarkText(),
-                                    unfocusedTextColor = MobilePaymentsStyleProvider.colors.getDarkText(),
-                                ),
-                                value = state.amountInput,
-                                onValueChange = {it ->
-                                    if( it.matches(("^?\\d*(\\.\\d{0,2})?$").toRegex()) ){
-                                            model.updateAmountInput(it)
-                                    }
-                                },
-                                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                                label = {
-                                    Text(
-                                        textAlign = TextAlign.Start,
-                                        text = "Amount",
-                                        modifier = Modifier.padding(8.dp, 0.dp),
-                                        color = MobilePaymentsStyleProvider.colors.getDarkText(),
-                                    )
-                                },
-                                singleLine = true,
-                                modifier = Modifier.fillMaxWidth().padding(vertical = 6.dp, horizontal = 16.dp),
-                            )
-                            Row(modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(horizontal = 16.dp, vertical = 8.dp)) {
-                                Text(
-                                    textAlign = TextAlign.Start,
-                                    text = "Total",
-                                    style = Typography.headlineMedium,
-                                    modifier = Modifier.weight(1f),
-                                    color = MobilePaymentsStyleProvider.colors.getDarkText(),
-                                )
-                                Text(
-                                    textAlign = TextAlign.Start,
-                                    text = "$${state.amountInput.toDoubleOrNull() ?: 0.0}",
-                                    style = Typography.headlineLarge,
-                                    modifier = Modifier,
-                                    color = MobilePaymentsStyleProvider.colors.getDarkText(),
-                                )
-                            }
-                            Box(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(horizontal = 16.dp, vertical = 8.dp),
-                                contentAlignment = Alignment.Center,
-                            ) {
-                                PayButton(
-                                    modifier = Modifier.fillMaxWidth(),
-                                    onClick = {
-                                        model.requestGooglePay()
-                                    },
-                                    allowedPaymentMethods = model.getAllowedPaymentMethods(),
-                                )
-                            }
+
                             CreditCardListView(
                                 modifier = Modifier.fillMaxWidth(),
                                 model = cardListModel,
@@ -190,6 +139,89 @@ class UIComponentsActivity : ComponentActivity(), UIComponentsActivityListener {
                                 }
                             )
 
+                            Column(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 12.dp)){
+                                Text(
+                                    textAlign = TextAlign.Start,
+                                    text = "Your Cart",
+                                    style = Typography.headlineSmall,
+                                    modifier = Modifier,
+                                    color = MobilePaymentsStyleProvider.colors.getDarkText(),
+                                )
+                                Row(modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 0.dp, vertical = 8.dp)) {
+                                    Text(
+                                        textAlign = TextAlign.Start,
+                                        text = "Gemini Chart",
+                                        style = Typography.labelLarge,
+                                        modifier = Modifier.weight(1f),
+                                        color = MobilePaymentsStyleProvider.colors.getDarkText(),
+                                    )
+                                    Text(
+                                        textAlign = TextAlign.Start,
+                                        text = "$10.99",
+                                        style = Typography.bodyLarge,
+                                        modifier = Modifier,
+                                        color = MobilePaymentsStyleProvider.colors.getDarkText(),
+                                    )
+                                }
+                                Box(modifier = Modifier.fillMaxWidth().padding(horizontal = 8.dp).height(1.dp).background(color = Disabled))
+                                Row(modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 0.dp, vertical = 8.dp)) {
+                                    Text(
+                                        textAlign = TextAlign.Start,
+                                        text = "Quickstart Kit",
+                                        style = Typography.labelLarge,
+                                        modifier = Modifier.weight(1f),
+                                        color = MobilePaymentsStyleProvider.colors.getDarkText(),
+                                    )
+                                    Text(
+                                        textAlign = TextAlign.Start,
+                                        text = "$12.00",
+                                        style = Typography.bodyLarge,
+                                        modifier = Modifier,
+                                        color = MobilePaymentsStyleProvider.colors.getDarkText(),
+                                    )
+                                }
+                                Box(modifier = Modifier.fillMaxWidth().padding(horizontal = 4.dp).height(1.dp).background(color = DarkText))
+                                Row(modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 0.dp, vertical = 8.dp)) {
+                                    Text(
+                                        textAlign = TextAlign.Start,
+                                        text = "Taxes & Fees",
+                                        style = Typography.bodyMedium,
+                                        modifier = Modifier.weight(1f),
+                                        color = MobilePaymentsStyleProvider.colors.getDarkText(),
+                                    )
+                                    Text(
+                                        textAlign = TextAlign.Start,
+                                        text = "$5.95",
+                                        style = Typography.bodyMedium,
+                                        modifier = Modifier,
+                                        color = MobilePaymentsStyleProvider.colors.getDarkText(),
+                                    )
+                                }
+                                Row(modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 0.dp, vertical = 8.dp)) {
+                                    Text(
+                                        textAlign = TextAlign.Start,
+                                        text = "Total",
+                                        style = Typography.headlineMedium,
+                                        modifier = Modifier.weight(1f),
+                                        color = MobilePaymentsStyleProvider.colors.getDarkText(),
+                                    )
+                                    Text(
+                                        textAlign = TextAlign.Start,
+                                        text = "$${state.amountInput.toDoubleOrNull() ?: 0.0}",
+                                        style = Typography.headlineLarge,
+                                        modifier = Modifier,
+                                        color = MobilePaymentsStyleProvider.colors.getDarkText(),
+                                    )
+                                }
+                            }
                             Text(
                                 textAlign = TextAlign.Start,
                                 text = "Acme provides information you submit through this site to a vendor for security purposes.  Please see the Privacy Policy for more information.",
@@ -224,10 +256,24 @@ class UIComponentsActivity : ComponentActivity(), UIComponentsActivityListener {
                                 color = MobilePaymentsStyleProvider.colors.getDarkText(),
                             )
 
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                                contentAlignment = Alignment.Center,
+                            ) {
+                                PayButton(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    onClick = {
+                                        model.requestGooglePay()
+                                    },
+                                    allowedPaymentMethods = model.getAllowedPaymentMethods(),
+                                )
+                            }
                             PurchaseButton(
                                 amount = state.amountInput.toDoubleOrNull() ?: 0.0,
                                 payment = cardListModel.getSelectedCard(),
-                                modifier = Modifier,
+                                modifier = Modifier.imePadding(),
                                 model = purchaseButtonModel,
                                 requireCvv = true,
                                 transactionType = TransactionType.SALE,
