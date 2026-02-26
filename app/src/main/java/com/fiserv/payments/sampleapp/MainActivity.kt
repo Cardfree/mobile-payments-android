@@ -2,6 +2,7 @@ package com.fiserv.payments.sampleapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -24,11 +25,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.collectAsState
@@ -40,8 +38,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -70,6 +66,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             val state by model.state.collectAsState()
+            model.updateCustomerId(Settings.System.getString(contentResolver, Settings.Secure.ANDROID_ID))
 
             FiservMobilePaymentsSampleTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
@@ -92,27 +89,6 @@ class MainActivity : ComponentActivity() {
                             Text(
                                 text = "Mobile Payments Sample App",
                                 modifier = Modifier.padding(16.dp),
-                            )
-                            OutlinedTextField(
-                                shape = RoundedCornerShape(MobilePaymentsStyleProvider.shapes.getTextFieldCornerRadius()),
-                                colors = OutlinedTextFieldDefaults.colors(
-                                    focusedBorderColor = MobilePaymentsStyleProvider.colors.getPrimary(),
-                                    unfocusedBorderColor = MobilePaymentsStyleProvider.colors.getMediumText(),
-                                ),
-                                value = state.customerId,
-                                onValueChange = {it ->
-                                    model.updateCustomerId(it)
-                                },
-                                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
-                                label = {
-                                    Text(
-                                        textAlign = TextAlign.Start,
-                                        text = "Customer ID",
-                                        modifier = Modifier.padding(8.dp, 0.dp)
-                                    )
-                                },
-                                singleLine = true,
-                                modifier = Modifier.fillMaxWidth().padding(vertical = 6.dp, horizontal = 16.dp),
                             )
                             Button(
                                 modifier = Modifier
