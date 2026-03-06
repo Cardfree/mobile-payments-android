@@ -5,8 +5,6 @@ import com.fiserv.payments.api.core.MobilePayments
 import com.fiserv.payments.api.http.data.Environment
 
 class MobilePaymentsApplication : Application() {
-    var customerId: String? = null
-
     override fun onCreate() {
         super.onCreate()
 
