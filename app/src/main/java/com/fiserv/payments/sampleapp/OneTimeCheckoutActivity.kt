@@ -197,6 +197,7 @@ class OneTimeCheckoutActivity : ComponentActivity(), OneTimeCheckoutActivityList
                                 autoSubmitAfterAddingCard = true,
                                 cardNumberMaskMode = CardNumberMaskMode.NONE,
                                 addressMode = CreditCardDetailsAddressMode.POSTAL_CODE,
+                                showTotal = false,
                                 transactionType = TransactionType.SALE,
                                 purchaseListener = object: Response<Transaction>{
                                     override fun success(response: Transaction) {
