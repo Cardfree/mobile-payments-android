@@ -180,6 +180,7 @@ PurchaseButton(
   canSaveCard = true,
   autoSubmitAfterAddingCard = false,
   addressMode = CreditCardDetailsAddressMode.POSTAL_CODE,
+  showTotal = true,
   transactionType = TransactionType.SALE,
   clientTransactionId = null,
   merchantReference = null,
@@ -203,7 +204,9 @@ PurchaseButton(
   * **(OPTIONAL)** Modifier
     * A standard composable Modifier, used to specify the size and layout of the `PurchaseButton` in the host UI.
   * **(OPTIONAL)** Model
-    * A `PurchaseButtonModel` instantiated by the host UI.  Providing this to the `PurchaseButton` will hoist its state and allow the host UI to control the Button’s behavior
+    * A `PurchaseButtonModel` instantiated by the host UI.  Providing this to the `PurchaseButton` will hoist its state and allow the host UI to control the Button’s behavior.
+  * **(OPTIONAL)** Show Total
+    * A boolean flag to show or hide the Amount provided to the `PurchaseButton` by the host UI.  Providing this will allow the host UI to suppress the total display to maximize UI flexibility.
   * **(OPTIONAL)** Transaction Type
     * The type of Payment you are seeking to collect.  The options are `TransactionType.SALE` or `TransactionType.AUTH`.  Simply put, `SALE` is used to collect funds immediately, while `AUTH` will reserve funds on the payment method, but will not collect them until a `CAPTURE` transaction is run in the future. 
   * **(OPTIONAL)** Client Transaction Id
