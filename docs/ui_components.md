@@ -22,6 +22,7 @@ CreditCardListView(
   requireCvv = false,
   canAddCards = true,
   defaultEnabled = true,
+  collapsibleMode = CollapsibleMode.COLLAPSED,
   mode = CreditCardListMode.PAYMENT,
   onCreditCardSelected = {card ->
     handleCardSelection(card)
@@ -46,6 +47,8 @@ CreditCardListView(
     * Flag to allow adding a `CreditCard` through the `CreditCardListView`.  Defaults to true
   * **(OPTIONAL)** Default Enabed
     * Flag to allow the list to automatically select the user's Default `CreditCard`, if one exists.  Defaults to true
+  * **(OPTIONAL)** Collapsible Mode
+    * Collapsible mode of the list.  Options are `DISABLED`, `COLLAPSED`, and `EXPANDED`.  `DISABLED` prevents all collapsible behavior, while `COLLAPSED` and `EXPANDED` enable the behavior and set the default list state.  Defaults to `COLLAPSED`
   * **(OPTIONAL)** Mode
     * Display mode of the list.  Options are `PAYMENT` and `MANAGE`.  `PAYMENT` allows Credit Cards to be selected from the list, while `MANAGE` allows only Credit Card List management actions such as add and delete cards.  Defaults to `PAYMENT`  
   * **(OPTIONAL)** On Credit Card Selected
