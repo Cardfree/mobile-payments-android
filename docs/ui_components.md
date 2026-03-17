@@ -258,7 +258,7 @@ Here are some useful utility methods shared across all `MobilePaymentsViewModel`
   * addLoadingListener(listener: LoadingListener)
     * Inject a LoadingListener into the model.  This listener is invoked when showLoading() or hideLoading() is called and if it returns true, the loading throbber within the UI widget is bypassed
 > [!Note]
-> Use this to suppress throbber behavior if necessary
+> Use the loading listener to suppress throbber behavior if necessary
   * parseError(exception: Throwable?): String
     * Return the primary error message of a `WebErrorSet` provided to a `Response.error`, or the `mp_errorGeneric` string if no message can be found.
   * makePayment(amount: Double, paymentMethod: PaymentMethod, transactionType: TransactionType, listener:Response<Transaction>?)
