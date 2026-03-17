@@ -27,6 +27,9 @@ interface MobilePaymentsColorProvider {
   fun getDisabled(): Color{
     return Disabled
   }
+  fun getDisabledText(): Color{
+    return MediumText
+  }
   fun getSuccess(): Color{
     return Green
   }
