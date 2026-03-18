@@ -27,7 +27,8 @@ data class UIComponentsActivityState(
     var errorMessage: String = "",
     var amountInput: String = "",
     var isLoading: Boolean = false,
-    var customerId: String? = null
+    var customerId: String? = null,
+    var termsChecked: Boolean = false,
 )
 class UIComponentsActivityViewModel(application: Application) : MobilePaymentsViewModel(application), LoadingListener {
     private val _state = MutableStateFlow(UIComponentsActivityState())
@@ -70,6 +71,14 @@ class UIComponentsActivityViewModel(application: Application) : MobilePaymentsVi
         _state.update { currentState ->
             currentState.copy(
                 customerId = customerId,
+            )
+        }
+    }
+
+    fun updateTermsChecked(termsChecked: Boolean) {
+        _state.update { currentState ->
+            currentState.copy(
+                termsChecked = termsChecked,
             )
         }
     }

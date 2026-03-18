@@ -149,9 +149,6 @@ class MainActivity : ComponentActivity() {
                                     .padding(horizontal = 16.dp, vertical = 12.dp),
                                 onClick = {
                                     val intent = Intent(this@MainActivity, TokenizeCardActivity::class.java)
-                                    if( state.customerId.isNotEmpty() ){
-                                        intent.putExtra(CUSTOMER_ID_KEY, state.customerId)
-                                    }
                                     startActivity(intent)
                                 },
                             ){

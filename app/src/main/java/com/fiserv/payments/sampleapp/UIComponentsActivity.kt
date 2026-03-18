@@ -14,6 +14,7 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -22,6 +23,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Checkbox
+import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -31,9 +35,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
@@ -90,10 +96,7 @@ class UIComponentsActivity : ComponentActivity(), UIComponentsActivityListener {
                             .background(color = MobilePaymentsStyleProvider.colors.getBackground())
                     ){
                         Column(
-                            modifier = Modifier.fillMaxSize().scrollable(
-                                state = rememberScrollState(),
-                                orientation = Orientation.Vertical
-                            ),
+                            modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState()),
                             horizontalAlignment = Alignment.CenterHorizontally,
                         ) {
 
@@ -233,25 +236,53 @@ class UIComponentsActivity : ComponentActivity(), UIComponentsActivityListener {
                                     val styleCenter = SpanStyle(
                                         color = Color(0xff64B5F6),
                                         fontSize = 14.sp,
-                                        textDecoration = TextDecoration.Underline
+                                        fontWeight = FontWeight.Bold,
+                                        textDecoration = TextDecoration.Underline,
                                     )
+                                    val baseStyle = SpanStyle(
+                                        color = DarkText,
+                                        fontSize = 14.sp,
+                                        fontWeight = FontWeight.Bold,
+                                    )
+
+                                    withStyle(
+                                        style = baseStyle
+                                    ) {
+                                        append("I agree to the ")
+                                    }
 
                                     withStyle(
                                         style = styleCenter
                                     ) {
-                                        append("Terms and Conditions of Service")
+                                        append("Terms and Conditions")
                                     }
                                 }
                             }
-                            Text(
-                                textAlign = TextAlign.Start,
-                                text = annotatedLinkString,
-                                style = Typography.bodyMedium,
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(horizontal = 16.dp, vertical = 6.dp),
-                                color = MobilePaymentsStyleProvider.colors.getDarkText(),
-                            )
+                            Row(modifier = Modifier.fillMaxWidth().clickable{
+                                model.updateTermsChecked(!state.termsChecked)
+                            },
+                                verticalAlignment = Alignment.CenterVertically
+                            ){
+                                Checkbox(
+                                    modifier = Modifier.padding(all = 2.dp),
+                                    colors = CheckboxDefaults.colors(
+                                        checkedColor = MobilePaymentsStyleProvider.colors.getPrimary(),
+                                        uncheckedColor = MobilePaymentsStyleProvider.colors.getMediumText(),
+                                        checkmarkColor = MobilePaymentsStyleProvider.colors.getLightText()
+                                    ),
+                                    checked = state.termsChecked,
+                                    onCheckedChange = {it ->
+                                        model.updateTermsChecked(!state.termsChecked)
+                                    },
+                                    interactionSource = remember { MutableInteractionSource() }
+                                )
+                                Text(
+                                    text = annotatedLinkString,
+                                    style = Typography.labelMedium,
+                                    modifier = Modifier.padding(start = 6.dp).clearAndSetSemantics{},
+                                )
+                            }
+
 
                             Box(
                                 modifier = Modifier
@@ -269,6 +300,7 @@ class UIComponentsActivity : ComponentActivity(), UIComponentsActivityListener {
                             }
                             PurchaseButton(
                                 amount = state.amountInput.toDoubleOrNull() ?: 0.0,
+                                disabled = !state.termsChecked,
                                 payment = cardListModel.getSelectedCard(),
                                 modifier = Modifier.imePadding(),
                                 model = purchaseButtonModel,
