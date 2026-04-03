@@ -206,7 +206,7 @@ PurchaseButton(
     * The amount to charge the provided `PaymentMethod` when the button is pressed.  This can also be updated through `PurchaseButtonModel.updateAmount(Double)`
   * **(OPTIONAL)** Mode
     * Flag to control the operation mode of the `PurchaseButton`.  Defaults to `MULTI_CARD`
-* **(OPTIONAL)** Disabled
+  * **(OPTIONAL)** Disabled
     * A boolean flag to control the enabled state of the `PurchaseButton`.  When set to true, the `PurchaseButton` is wholly disabled.  When set to false, `PurchaseButton` operates on its internal logic to determine enabled state.  Defaults to false
   * **(OPTIONAL)** Modifier
     * A standard composable Modifier, used to specify the size and layout of the `PurchaseButton` in the host UI.
