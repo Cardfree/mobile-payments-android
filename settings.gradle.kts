@@ -2,6 +2,7 @@ import java.util.Properties
 
 pluginManagement {
     repositories {
+        maven("https://nexus.corp.clover.com/repository/repo")
         google {
             content {
                 includeGroupByRegex("com\\.android.*")
@@ -27,6 +28,7 @@ if (customPropertiesFile.exists()) {
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
+        maven("https://nexus.corp.clover.com/repository/repo")
         google()
         mavenCentral()
         maven {
@@ -41,4 +43,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "Fiserv Mobile Payments Sample"
 include(":app")
- 
